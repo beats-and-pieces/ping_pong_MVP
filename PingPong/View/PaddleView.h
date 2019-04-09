@@ -12,7 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PaddleView : UIView
 
-//- (id)initWithPositionForTop:(BOOL)top withWidth:(CGFloat)width withHeight:(CGFloat)height;
 - (id)initWithPositionForAView:(UIView *)view isTop:(BOOL)top withWidth:(CGFloat)width withHeight:(CGFloat)height;
 @end
 

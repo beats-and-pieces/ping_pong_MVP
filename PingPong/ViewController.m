@@ -40,11 +40,10 @@
     [super viewDidLoad];
     
     [self initGameField];
-    // Do any additional setup after loading the view, typically from a nib.
+
 }
 - (void)loadUISettings
 {
-    //    self.ballRadius = 15.0f;
     self.ballDiameter = 25.0f;
     self.paddleWidth = 100;
     self.paddleHeight = 20;
@@ -60,7 +59,6 @@
     [self loadUISettings];
     self.view.backgroundColor = [UIColor whiteColor];
     self.gameField = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height)];
-    //    self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height);
     self.view.autoresizesSubviews = NO;
     self.topPaddle = [[PaddleView alloc] initWithPositionForAView:self.gameField isTop:YES withWidth:self.paddleWidth withHeight:self.paddleHeight];
     self.bottomPaddle = [[PaddleView alloc] initWithPositionForAView:self.gameField isTop:NO withWidth:self.paddleWidth withHeight:self.paddleHeight];
@@ -179,8 +177,6 @@
     self.ball.center = self.view.center;
     self.dY *= -1;
     self.dX *= -1;
-//    self.score = 0;
-    
     
     [self startTimer];
 }

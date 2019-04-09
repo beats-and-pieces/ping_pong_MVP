@@ -10,15 +10,6 @@
 
 @implementation PaddleView
 
-/*
- // Only override drawRect: if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect {
- // Drawing code
- }
- */
-
-
 - (id)initWithPositionForAView:(UIView *)view isTop:(BOOL)top withWidth:(CGFloat)width withHeight:(CGFloat)height
 {
     if ( self = [super init] )

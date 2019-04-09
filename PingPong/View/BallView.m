@@ -11,17 +11,6 @@
 @implementation BallView
 
 
-
-/*
- // Only override drawRect: if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect {
- // Drawing code
- }
- */
-
-
-
 - (id)initWithDiameter:(CGFloat)diameter
 {
     if ( self = [super initWithFrame:CGRectMake(0.0, 0.0, diameter, diameter)] )
