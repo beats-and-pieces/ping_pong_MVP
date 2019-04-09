@@ -17,23 +17,26 @@
  // Drawing code
  }
  */
-- (id)init
-{
-    if ( self = [super init] )
-    {
-        self.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/2 - 30.0, 0, 60.0, 5.0);
-        self.backgroundColor = [UIColor whiteColor];
-    }
-    
-    return self;
-}
 
-- (id)initWithPosition:(CGFloat)positionY
+
+- (id)initWithPositionForAView:(UIView *)view isTop:(BOOL)top withWidth:(CGFloat)width withHeight:(CGFloat)height
 {
     if ( self = [super init] )
     {
-        self.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/2 - 30.0, positionY, 60.0, 5.0);
-        self.backgroundColor = [UIColor whiteColor];
+        if (top) {
+            self.frame = CGRectMake(view.bounds.size.width / 2 - width / 2, height, width, height);
+            self.backgroundColor = [UIColor greenColor];
+        }
+        else
+        {
+            self.frame = CGRectMake(view.bounds.size.width / 2 - width / 2, view.bounds.size.height - height, width, height);
+            self.backgroundColor = [UIColor blueColor];
+        }
+        
+        self.layer.cornerRadius = self.frame.size.width / 10;
+        self.layer.borderWidth = 0.2;
+        self.layer.borderColor = [UIColor blackColor].CGColor;
+        
     }
     
     return self;

@@ -14,11 +14,23 @@
 
 @property (strong, nonatomic) PaddleView *bottomPaddle;
 @property (strong, nonatomic) PaddleView *topPaddle;
-@property (strong, nonatomic) UIView *ball;
+@property (strong, nonatomic) BallView *ball;
+@property (strong, nonatomic) UIView *gameField;
+
+@property (strong, nonatomic) UILabel *topScoreCounterLabel;
+@property (strong, nonatomic) UILabel *bottomScoreCounterLabel;
+@property (assign, nonatomic) double currentSpeed;
+@property (assign, nonatomic) double speedMultiplier;
 @property (assign, nonatomic) CGFloat dX;
 @property (assign, nonatomic) CGFloat dY;
-@property (assign, nonatomic) CGFloat ballRadius;
 @property (assign, nonatomic) CGFloat ballDiameter;
+@property (assign, nonatomic) CGFloat paddleWidth;
+@property (assign, nonatomic) CGFloat paddleHeight;
+@property (strong, nonatomic) UIButton *pauseButton;
+@property (assign, nonatomic) BOOL isPaused;
+@property (assign, nonatomic) uint32_t score;
+@property (strong, nonatomic) NSTimer *gameTimer;
+
 
 @end
 
@@ -30,19 +42,59 @@
     [self initGameField];
     // Do any additional setup after loading the view, typically from a nib.
 }
-
-- (void)initGameField
-{   self.ballRadius = 15.0f;
-    self.ballDiameter = 30.0f;
-    self.view.backgroundColor = [UIColor blackColor];
+- (void)loadUISettings
+{
+    //    self.ballRadius = 15.0f;
+    self.ballDiameter = 25.0f;
+    self.paddleWidth = 100;
+    self.paddleHeight = 20;
+    self.currentSpeed = 0.005f;
+    self.speedMultiplier = 1.0f;
+    self.score = 0;
     
-    self.topPaddle = [[PaddleView alloc] initWithPosition:0];
-    self.bottomPaddle = [[PaddleView alloc] initWithPosition:self.view.frame.size.height - 5.0];
+    
+}
+- (void)initGameField
+
+{
+    [self loadUISettings];
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.gameField = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height)];
+    //    self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height);
+    self.view.autoresizesSubviews = NO;
+    self.topPaddle = [[PaddleView alloc] initWithPositionForAView:self.gameField isTop:YES withWidth:self.paddleWidth withHeight:self.paddleHeight];
+    self.bottomPaddle = [[PaddleView alloc] initWithPositionForAView:self.gameField isTop:NO withWidth:self.paddleWidth withHeight:self.paddleHeight];
     self.ball = [[BallView alloc] initWithDiameter:self.ballDiameter];
     
-    [self.view addSubview:self.topPaddle];
-    [self.view addSubview:self.bottomPaddle];
-    [self.view addSubview:self.ball];
+    [self.view addSubview:self.gameField];
+    
+    [self.gameField addSubview:self.topPaddle];
+    [self.gameField addSubview:self.bottomPaddle];
+    [self.gameField addSubview:self.ball];
+    
+    self.topScoreCounterLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 16, 200, 50)];
+    self.topScoreCounterLabel.textColor = [UIColor greenColor];
+    self.topScoreCounterLabel.text = @"0";
+    [self.gameField addSubview:self.topScoreCounterLabel];
+    self.bottomScoreCounterLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 48, 200, 50)];
+    self.bottomScoreCounterLabel.textColor = [UIColor blueColor];
+    self.bottomScoreCounterLabel.text = @"0";
+    [self.gameField addSubview:self.bottomScoreCounterLabel];
+    
+    self.pauseButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.pauseButton.frame = CGRectMake(CGRectGetWidth(self.view.frame) - 16.0 - 50, 32.0, 50.0, 50.0);
+    self.pauseButton.backgroundColor = [UIColor grayColor];
+    
+    self.pauseButton.layer.cornerRadius = self.pauseButton.frame.size.width / 10;
+    self.pauseButton.layer.borderWidth = 0.2;
+    self.pauseButton.alpha = 0.5;
+    self.pauseButton.layer.borderColor = [UIColor blackColor].CGColor;
+    
+    [self.pauseButton setTitle:@"||" forState:UIControlStateNormal];
+    [self.pauseButton addTarget:self action:@selector(pauseGame) forControlEvents:UIControlEventTouchUpInside];
+    [self.gameField addSubview: self.pauseButton];
+    [self.gameField sendSubviewToBack:self.pauseButton];
+    
     [self startGame];
 }
 
@@ -51,51 +103,48 @@
     UITouch *touch = touches.anyObject;
     CGPoint currentPoint = [touch locationInView:self.view];
     
-    // Простейшая проверка, чтобы bottomPaddle не уезжал за границы экрана
-    if (currentPoint.x >= self.view.frame.size.width - self.ballDiameter)
+    if (currentPoint.x >= self.gameField.frame.size.width - self.ballDiameter)
     {
-        self.bottomPaddle.center = CGPointMake(self.view.frame.size.width - self.ballDiameter, self.view.frame.size.height - 2.5);
+        self.bottomPaddle.center = CGPointMake(self.gameField.frame.size.width - self.ballDiameter, self.gameField.frame.size.height - self.paddleHeight / 2);
     }
-    else if (currentPoint.x <= self.ballRadius * 2)
+    else if (currentPoint.x <= self.ballDiameter)
     {
-        self.bottomPaddle.center = CGPointMake(self.ballDiameter, self.view.frame.size.height - 2.5);
+        self.bottomPaddle.center = CGPointMake(self.ballDiameter, self.gameField.frame.size.height - self.paddleHeight / 2);
     }
     else
     {
-        self.bottomPaddle.center = CGPointMake(currentPoint.x, self.view.frame.size.height - 2.5);
+        self.bottomPaddle.center = CGPointMake(currentPoint.x, self.gameField.frame.size.height - self.paddleHeight / 2);
     }
 }
 
 - (void)startGame
 {
     self.ball.center = self.view.center;
-    self.dX = self.dY = 1.0;
-//    self.currentSpeed = 0.005f; // По умолчанию, скорость нормальная
+    self.dX = 1.0;
+    self.dY = 1.0;
     
-   // NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(countTime) object:nil];
-//    [thread start];
-    
-    NSTimer *gameTimer = [NSTimer scheduledTimerWithTimeInterval:0.005f target:self selector:@selector(moveBall) userInfo:nil repeats:YES];
+    [self startTimer];
 }
 
 - (void)moveBall
 {
-    // Простейшая проверка, чтобы topPaddle не уезжал за границы экрана
-    if (self.ball.center.x >= self.view.frame.size.width - 30.0)
+    if (self.ball.center.x >= self.gameField.frame.size.width - self.topPaddle.frame.size.width / 2)
     {
-        self.topPaddle.center = CGPointMake(self.view.frame.size.width - 30.0, 2.5);
+        self.topPaddle.center = CGPointMake(self.gameField.frame.size.width - self.paddleWidth / 2, self.paddleHeight / 2);
     }
-    else if (self.ball.center.x <= 30.0)
+    else if (self.ball.center.x <= self.topPaddle.frame.size.width / 2)
     {
-        self.topPaddle.center = CGPointMake(30.0, 2.5);
+        self.topPaddle.center = CGPointMake(self.topPaddle.frame.size.width / 2, self.paddleHeight / 2);
     }
     else
     {
-        self.topPaddle.center = CGPointMake(self.ball.center.x, 2.5);
+        self.topPaddle.center = CGPointMake(self.ball.center.x, self.paddleHeight / 2);
     }
-
+    
     [self bounceBallIfNeeded];
+    [self checkIfComputerScored];
     self.ball.center = CGPointMake(self.ball.center.x + self.dX, self.ball.center.y + self.dY);
+    
     
 }
 
@@ -113,4 +162,82 @@
     }
 }
 
+- (void)checkIfComputerScored
+{
+    if (self.ball.frame.origin.y + self.ball.frame.size.height > self.view.frame.size.height){
+        self.score++;
+        NSLog(@"%d", self.score);
+        self.topScoreCounterLabel.text = [NSString stringWithFormat:@"%d",self.score];
+        [self resetGame];
+    }
+    
+}
+
+-(void)resetGame
+{
+    [self stopTimer];
+    self.ball.center = self.view.center;
+    self.dY *= -1;
+    self.dX *= -1;
+//    self.score = 0;
+    
+    
+    [self startTimer];
+}
+
+- (void)startTimer
+{
+    self.gameTimer = [NSTimer scheduledTimerWithTimeInterval:self.currentSpeed / self.speedMultiplier target:self selector:@selector(moveBall) userInfo:nil repeats:YES];
+}
+-(void)stopTimer
+{
+    [self.gameTimer invalidate];
+    self.gameTimer = nil;
+}
+
+-(void)pauseGame
+{
+    if (!self.isPaused)
+    {
+        [self stopTimer];
+        self.isPaused = YES;
+        [self.pauseButton setTitle:@">" forState:UIControlStateNormal];
+    }
+    else
+    {
+        self.isPaused = NO;
+        [self startTimer];
+        [self.pauseButton setTitle:@"||" forState:UIControlStateNormal];
+    }
+    
+    
+    
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [self pauseGame];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (self.isPaused) {
+        [super viewWillAppear:animated];
+        [self pauseGame];
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        if ([defaults boolForKey:@"Speed has changed"])
+        {
+            self.speedMultiplier = [defaults floatForKey:@"Selected speed"];
+            [self resetGame];
+        }
+        
+        
+        NSLog(@"Speed loaded!");
+    }
+    
+    
+    
+    
+}
 @end

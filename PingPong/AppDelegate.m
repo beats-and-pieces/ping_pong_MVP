@@ -7,8 +7,12 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
+#import "SettingsViewController.h"
 
 @interface AppDelegate ()
+
+
 
 @end
 
@@ -16,7 +20,28 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    
+    ViewController *redVC = [[ViewController alloc] init];
+    redVC.tabBarItem.title = @"Игра";
+    redVC.tabBarItem.image = [UIImage imageNamed:@"zodiak2"];
+    
+    SettingsViewController *greenVC = [[SettingsViewController alloc] init];
+    greenVC.tabBarItem.title = @"Настройки";
+    greenVC.tabBarItem.image = [UIImage imageNamed:@"zodiak3"];
+    
+  
+    
+    NSArray *viewControllerArray = @[redVC, greenVC];
+    UITabBarController *tabBarViewController = [[UITabBarController alloc] init];
+    tabBarViewController.tabBar.translucent = YES;
+    tabBarViewController.tabBar.tintColor = [UIColor whiteColor];
+    tabBarViewController.tabBar.barTintColor = [UIColor blackColor];
+    
+    tabBarViewController.viewControllers = viewControllerArray;
+    self.window.rootViewController = tabBarViewController;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
