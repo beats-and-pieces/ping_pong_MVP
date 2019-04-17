@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A0CD2B82267987900B640D5 /* SettingsViewPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0CD2B72267987900B640D5 /* SettingsViewPresenter.m */; };
 		3A1FF0582267229F005FD751 /* SettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1FF0572267229F005FD751 /* SettingsView.m */; };
 		3A1FF05D22672D5D005FD751 /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1FF05C22672D5D005FD751 /* GameView.m */; };
 		3A7B569F225C9FD600687519 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B569E225C9FD600687519 /* SettingsViewController.m */; };
+		3AAEE2AA22676C3D00C09B47 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAEE2A922676C3C00C09B47 /* GameViewController.m */; };
+		3AAEE2AE22676DBB00C09B47 /* GameViewPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAEE2AD22676DBA00C09B47 /* GameViewPresenter.m */; };
+		3AD8BA1D22678CA800E34B7A /* GameSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD8BA1C22678CA800E34B7A /* GameSettings.m */; };
 		3ADB0449225A2A8C00E9BEF4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB0448225A2A8C00E9BEF4 /* AppDelegate.m */; };
-		3ADB044C225A2A8C00E9BEF4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB044B225A2A8C00E9BEF4 /* ViewController.m */; };
 		3ADB0451225A2A8D00E9BEF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3ADB0450225A2A8D00E9BEF4 /* Assets.xcassets */; };
 		3ADB0454225A2A8D00E9BEF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ADB0452225A2A8D00E9BEF4 /* LaunchScreen.storyboard */; };
 		3ADB0457225A2A8D00E9BEF4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB0456225A2A8D00E9BEF4 /* main.m */; };
@@ -20,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A0CD2B62267982100B640D5 /* SettingsViewPresenterProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewPresenterProtocol.h; sourceTree = "<group>"; };
+		3A0CD2B72267987900B640D5 /* SettingsViewPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewPresenter.m; sourceTree = "<group>"; };
 		3A1FF0562267229F005FD751 /* SettingsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsView.h; sourceTree = "<group>"; };
 		3A1FF0572267229F005FD751 /* SettingsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsView.m; sourceTree = "<group>"; };
 		3A1FF059226724D3005FD751 /* SettingsViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewDelegate.h; sourceTree = "<group>"; };
@@ -28,11 +33,17 @@
 		3A1FF05E2267305E005FD751 /* GameViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewDelegate.h; sourceTree = "<group>"; };
 		3A7B569E225C9FD600687519 /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		3A7B56A0225C9FE900687519 /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		3AAEE2A822676BDA00C09B47 /* GameViewPresenterProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewPresenterProtocol.h; sourceTree = "<group>"; };
+		3AAEE2A922676C3C00C09B47 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		3AAEE2AB22676C5300C09B47 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		3AAEE2AC22676D5700C09B47 /* GameViewPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewPresenter.h; sourceTree = "<group>"; };
+		3AAEE2AD22676DBA00C09B47 /* GameViewPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewPresenter.m; sourceTree = "<group>"; };
+		3AD8BA1B22678C4C00E34B7A /* GameSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameSettings.h; sourceTree = "<group>"; };
+		3AD8BA1C22678CA800E34B7A /* GameSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameSettings.m; sourceTree = "<group>"; };
+		3AD8BA202267971C00E34B7A /* SettingsViewPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewPresenter.h; sourceTree = "<group>"; };
 		3ADB0444225A2A8C00E9BEF4 /* PingPong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PingPong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3ADB0447225A2A8C00E9BEF4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3ADB0448225A2A8C00E9BEF4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3ADB044A225A2A8C00E9BEF4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3ADB044B225A2A8C00E9BEF4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3ADB0450225A2A8D00E9BEF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3ADB0453225A2A8D00E9BEF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3ADB0455225A2A8D00E9BEF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,6 +68,10 @@
 		3A1FF05A22672C80005FD751 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3AAEE2AB22676C5300C09B47 /* GameViewController.h */,
+				3AAEE2A922676C3C00C09B47 /* GameViewController.m */,
+				3A7B56A0225C9FE900687519 /* SettingsViewController.h */,
+				3A7B569E225C9FD600687519 /* SettingsViewController.m */,
 				3A1FF059226724D3005FD751 /* SettingsViewDelegate.h */,
 				3A1FF05E2267305E005FD751 /* GameViewDelegate.h */,
 				3A1FF0562267229F005FD751 /* SettingsView.h */,
@@ -69,6 +84,28 @@
 				3ADB0465225A33D500E9BEF4 /* BallView.m */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		3AD8BA1E22678CBA00E34B7A /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				3AAEE2AC22676D5700C09B47 /* GameViewPresenter.h */,
+				3AAEE2AD22676DBA00C09B47 /* GameViewPresenter.m */,
+				3AAEE2A822676BDA00C09B47 /* GameViewPresenterProtocol.h */,
+				3AD8BA202267971C00E34B7A /* SettingsViewPresenter.h */,
+				3A0CD2B72267987900B640D5 /* SettingsViewPresenter.m */,
+				3A0CD2B62267982100B640D5 /* SettingsViewPresenterProtocol.h */,
+			);
+			name = Presenters;
+			sourceTree = "<group>";
+		};
+		3AD8BA1F22678CC700E34B7A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3AD8BA1B22678C4C00E34B7A /* GameSettings.h */,
+				3AD8BA1C22678CA800E34B7A /* GameSettings.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		3ADB043B225A2A8C00E9BEF4 = {
@@ -92,15 +129,13 @@
 			children = (
 				3ADB0447225A2A8C00E9BEF4 /* AppDelegate.h */,
 				3ADB0448225A2A8C00E9BEF4 /* AppDelegate.m */,
-				3ADB044A225A2A8C00E9BEF4 /* ViewController.h */,
-				3ADB044B225A2A8C00E9BEF4 /* ViewController.m */,
-				3A7B56A0225C9FE900687519 /* SettingsViewController.h */,
-				3A7B569E225C9FD600687519 /* SettingsViewController.m */,
+				3AD8BA1F22678CC700E34B7A /* Model */,
+				3A1FF05A22672C80005FD751 /* View */,
+				3AD8BA1E22678CBA00E34B7A /* Presenters */,
 				3ADB0450225A2A8D00E9BEF4 /* Assets.xcassets */,
 				3ADB0452225A2A8D00E9BEF4 /* LaunchScreen.storyboard */,
 				3ADB0455225A2A8D00E9BEF4 /* Info.plist */,
 				3ADB0456225A2A8D00E9BEF4 /* main.m */,
-				3A1FF05A22672C80005FD751 /* View */,
 			);
 			path = PingPong;
 			sourceTree = "<group>";
@@ -174,10 +209,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3ADB044C225A2A8C00E9BEF4 /* ViewController.m in Sources */,
 				3ADB0457225A2A8D00E9BEF4 /* main.m in Sources */,
+				3AAEE2AE22676DBB00C09B47 /* GameViewPresenter.m in Sources */,
+				3A0CD2B82267987900B640D5 /* SettingsViewPresenter.m in Sources */,
+				3AAEE2AA22676C3D00C09B47 /* GameViewController.m in Sources */,
 				3A1FF05D22672D5D005FD751 /* GameView.m in Sources */,
 				3ADB0466225A33D500E9BEF4 /* BallView.m in Sources */,
+				3AD8BA1D22678CA800E34B7A /* GameSettings.m in Sources */,
 				3A7B569F225C9FD600687519 /* SettingsViewController.m in Sources */,
 				3ADB0463225A2CB500E9BEF4 /* PaddleView.m in Sources */,
 				3ADB0449225A2A8C00E9BEF4 /* AppDelegate.m in Sources */,
