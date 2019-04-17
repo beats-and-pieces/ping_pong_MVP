@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3A1FF0582267229F005FD751 /* SettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1FF0572267229F005FD751 /* SettingsView.m */; };
+		3A1FF05D22672D5D005FD751 /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1FF05C22672D5D005FD751 /* GameView.m */; };
 		3A7B569F225C9FD600687519 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B569E225C9FD600687519 /* SettingsViewController.m */; };
 		3ADB0449225A2A8C00E9BEF4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB0448225A2A8C00E9BEF4 /* AppDelegate.m */; };
 		3ADB044C225A2A8C00E9BEF4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB044B225A2A8C00E9BEF4 /* ViewController.m */; };
@@ -21,6 +22,10 @@
 /* Begin PBXFileReference section */
 		3A1FF0562267229F005FD751 /* SettingsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsView.h; sourceTree = "<group>"; };
 		3A1FF0572267229F005FD751 /* SettingsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsView.m; sourceTree = "<group>"; };
+		3A1FF059226724D3005FD751 /* SettingsViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewDelegate.h; sourceTree = "<group>"; };
+		3A1FF05B22672D5D005FD751 /* GameView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameView.h; sourceTree = "<group>"; };
+		3A1FF05C22672D5D005FD751 /* GameView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameView.m; sourceTree = "<group>"; };
+		3A1FF05E2267305E005FD751 /* GameViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewDelegate.h; sourceTree = "<group>"; };
 		3A7B569E225C9FD600687519 /* SettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		3A7B56A0225C9FE900687519 /* SettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		3ADB0444225A2A8C00E9BEF4 /* PingPong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PingPong.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -32,10 +37,10 @@
 		3ADB0453225A2A8D00E9BEF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3ADB0455225A2A8D00E9BEF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3ADB0456225A2A8D00E9BEF4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3ADB0461225A2CB500E9BEF4 /* PaddleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PaddleView.h; path = PingPong/View/PaddleView.h; sourceTree = SOURCE_ROOT; };
-		3ADB0462225A2CB500E9BEF4 /* PaddleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PaddleView.m; path = PingPong/View/PaddleView.m; sourceTree = SOURCE_ROOT; };
-		3ADB0464225A33D500E9BEF4 /* BallView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BallView.h; path = PingPong/View/BallView.h; sourceTree = SOURCE_ROOT; };
-		3ADB0465225A33D500E9BEF4 /* BallView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BallView.m; path = PingPong/View/BallView.m; sourceTree = SOURCE_ROOT; };
+		3ADB0461225A2CB500E9BEF4 /* PaddleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PaddleView.h; path = PingPong/PaddleView.h; sourceTree = SOURCE_ROOT; };
+		3ADB0462225A2CB500E9BEF4 /* PaddleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PaddleView.m; path = PingPong/PaddleView.m; sourceTree = SOURCE_ROOT; };
+		3ADB0464225A33D500E9BEF4 /* BallView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BallView.h; path = PingPong/BallView.h; sourceTree = SOURCE_ROOT; };
+		3ADB0465225A33D500E9BEF4 /* BallView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BallView.m; path = PingPong/BallView.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +54,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A1FF05A22672C80005FD751 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3A1FF059226724D3005FD751 /* SettingsViewDelegate.h */,
+				3A1FF05E2267305E005FD751 /* GameViewDelegate.h */,
+				3A1FF0562267229F005FD751 /* SettingsView.h */,
+				3A1FF0572267229F005FD751 /* SettingsView.m */,
+				3A1FF05B22672D5D005FD751 /* GameView.h */,
+				3A1FF05C22672D5D005FD751 /* GameView.m */,
+				3ADB0461225A2CB500E9BEF4 /* PaddleView.h */,
+				3ADB0462225A2CB500E9BEF4 /* PaddleView.m */,
+				3ADB0464225A33D500E9BEF4 /* BallView.h */,
+				3ADB0465225A33D500E9BEF4 /* BallView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		3ADB043B225A2A8C00E9BEF4 = {
 			isa = PBXGroup;
 			children = (
@@ -74,27 +96,13 @@
 				3ADB044B225A2A8C00E9BEF4 /* ViewController.m */,
 				3A7B56A0225C9FE900687519 /* SettingsViewController.h */,
 				3A7B569E225C9FD600687519 /* SettingsViewController.m */,
-				3A1FF0562267229F005FD751 /* SettingsView.h */,
-				3A1FF0572267229F005FD751 /* SettingsView.m */,
 				3ADB0450225A2A8D00E9BEF4 /* Assets.xcassets */,
 				3ADB0452225A2A8D00E9BEF4 /* LaunchScreen.storyboard */,
 				3ADB0455225A2A8D00E9BEF4 /* Info.plist */,
 				3ADB0456225A2A8D00E9BEF4 /* main.m */,
-				3ADB0460225A2C4F00E9BEF4 /* View */,
+				3A1FF05A22672C80005FD751 /* View */,
 			);
 			path = PingPong;
-			sourceTree = "<group>";
-		};
-		3ADB0460225A2C4F00E9BEF4 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				3ADB0461225A2CB500E9BEF4 /* PaddleView.h */,
-				3ADB0462225A2CB500E9BEF4 /* PaddleView.m */,
-				3ADB0464225A33D500E9BEF4 /* BallView.h */,
-				3ADB0465225A33D500E9BEF4 /* BallView.m */,
-			);
-			name = View;
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +176,7 @@
 			files = (
 				3ADB044C225A2A8C00E9BEF4 /* ViewController.m in Sources */,
 				3ADB0457225A2A8D00E9BEF4 /* main.m in Sources */,
+				3A1FF05D22672D5D005FD751 /* GameView.m in Sources */,
 				3ADB0466225A33D500E9BEF4 /* BallView.m in Sources */,
 				3A7B569F225C9FD600687519 /* SettingsViewController.m in Sources */,
 				3ADB0463225A2CB500E9BEF4 /* PaddleView.m in Sources */,
