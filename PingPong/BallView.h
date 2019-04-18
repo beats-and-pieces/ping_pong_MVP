@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  BallView.h
 //  PingPong
 //
 //  Created by Anton Kuznetsov on 07/04/2019.
@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+NS_ASSUME_NONNULL_BEGIN
 
+@interface BallView : UIView
+
+- (id)initWithDiameter:(CGFloat)diameter;
 
 @end
 
+NS_ASSUME_NONNULL_END

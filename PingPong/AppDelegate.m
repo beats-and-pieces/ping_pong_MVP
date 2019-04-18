@@ -7,8 +7,11 @@
 //
 
 #import "AppDelegate.h"
-#import "ViewController.h"
+#import "GameViewController.h"
+#import "GameViewPresenter.h"
+#import "SettingsViewPresenter.h"
 #import "SettingsViewController.h"
+#import "GameSettings.h"
 
 @interface AppDelegate ()
 
@@ -22,17 +25,20 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
-    ViewController *redVC = [[ViewController alloc] init];
-    redVC.tabBarItem.title = @"Игра";
-    redVC.tabBarItem.image = [UIImage imageNamed:@"zodiak2"];
+    GameViewController *gameVC = [[GameViewController alloc] init];
+    GameSettings *gameSettings = [[GameSettings alloc] init];
+    GameViewPresenter *gameVP = [[GameViewPresenter alloc] initForAView:gameVC withSettings:gameSettings];
+    gameVC.gameViewPresenter = gameVP;
+
+    gameVC.tabBarItem.title = @"Игра";
+
     
-    SettingsViewController *greenVC = [[SettingsViewController alloc] init];
-    greenVC.tabBarItem.title = @"Настройки";
-    greenVC.tabBarItem.image = [UIImage imageNamed:@"zodiak3"];
-    
-  
-    
-    NSArray *viewControllerArray = @[redVC, greenVC];
+    SettingsViewController *settingsVC = [[SettingsViewController alloc] init];
+    SettingsViewPresenter *settingsVP = [[SettingsViewPresenter alloc] initForAView:settingsVC];
+    settingsVC.settingsViewPresenter = settingsVP;
+    settingsVC.tabBarItem.title = @"Настройки";
+
+    NSArray *viewControllerArray = @[gameVC, settingsVC];
     UITabBarController *tabBarViewController = [[UITabBarController alloc] init];
     tabBarViewController.tabBar.translucent = YES;
     tabBarViewController.tabBar.tintColor = [UIColor whiteColor];
